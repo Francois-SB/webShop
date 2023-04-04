@@ -1,0 +1,27 @@
+.ib{
+    display:inline-block;
+}
+@media screen and (min-width : 1100px){
+    /* pris en compte si largeur sup à 1100px*/
+    .mwArticles{ 
+    min-width: 1000px;
+}
+}
+
+.posMenu{
+    
+    vertical-align: top;
+    align-self: flex-start;
+}
+
+.posArticles{
+    vertical-align: top;
+}
+
+.lightBleu{
+    color: rgb(98, 98, 255);
+}
+
+/* main{
+    display:inline-block;
+} */

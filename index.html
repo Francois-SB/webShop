@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--     <link href="./style/reset.css" rel="stylesheet" > -->
+    <link href="./style/style.css" rel="stylesheet" > 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>myShop</title>
+</head>
+<body>
+<header>
+    <nav class="navbar is-transparent is-light">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="file:///C:/Users/SupervielleF/Documents/01%20cours/230327_web/Web%20work%20space/myShop/index.html">
+                <img src="./assets/img/FMSLogo.png" alt="myShop" width="112" height="28">
+            </a>       
+            <div id="navbarExampleTransparentExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item menu-item-hover-background-color" href="file:///C:/Users/SupervielleF/Documents/01%20cours/230327_web/Web%20work%20space/myShop/index.html">
+                  Home
+                    </a>
+                </div> 
+            </div>
+        </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="field is-grouped">
+                        <p class="control">
+                        <a class="button is-link" href="#">
+                          <span class="icon">
+                            <i class=""></i>
+                          </span>
+                          <span>log in</span>
+                        </a>
+                        </p>
+                        <p class="control">
+                        <a class="button" href="#">
+                        <span class="icon">
+                          <i class=""></i>
+                        </span>
+                        <span>log out</span>
+                        </a>
+                        </p>
+                        </div>
+                    </div>
+        </div>
+    </nav>
+</header>
+<main>
+
+        <section id="menuSection" class="section ib posMenu">
+            <div id="menu" class="box">
+                <div id="menu__body">
+                <table  class="table is-bordered">
+                    <tbody>
+                        <tr>
+                            <th>All</th>
+                        </tr>
+                        <tr>
+                            <th>SmartPhone</th>
+                        </tr>
+                        <tr>
+                            <th>Tablet</th>
+                        </tr>
+                        <tr>
+                            <th>PC</th>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="articlesSection" class="section ib mwArticles posArticles">
+            <div id="articles" class="box">
+                <div id="articles__title" class="m-1 notification is-link is-light">
+                    <h1 class="title">Liste des articles en stock</h1>
+                </div>
+                <div id="articles__body">
+                <table class="table is-striped is-bordered is-fullwidth is-hoverable">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>BRAND</th>
+                        <th>PRICE</th>
+                        <th>QUANTITE</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>S8</td>
+                            <td>Samsung</td>
+                            <td>200</td>
+                            <td>fenetre</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>S9</td>
+                            <td>Samsung</td>
+                            <td>250</td>
+                            <td>fenetre</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Iphone19</td>
+                            <td>Apple</td>
+                            <td>300</td>
+                            <td>fenetre</td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="cartSection" class="section ib posCart">
+            <div id="cart" class="box">
+                <div id="cart__title" class="m-1 notification is-link is-light">
+                    <h1 class="title">Contenu de mon panier</h1>
+                </div>
+                <!-- data+buttons -->
+                <div id="cart__body">
+                    <div id="cart__body__resume">
+                    <!-- reste en JS -->
+                    </div>
+                    <button class="button is-link">Suivant</button>
+                </div>
+            </div>    
+        </section>
+
+        <section id="custInfoSectionSection" class="section ib posCustInfos">
+            <div id="articles" class="box">
+                <form>
+                    <div class="field">
+                        <label class="label">Nom</label>
+                        <div class="control">
+                            <input class="input" type="Name" placeholder="">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Adresse</label>
+                        <div class="control">
+                            <input class="input" type="Address" placeholder="">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Telephone</label>
+                        <div class="control">
+                            <input class="input" type="Phone" placeholder="">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input class="input" type="email" placeholder="e.g. alex@example.com">
+                        </div>
+                    </div>
+                
+                    <a class="button is-link mr-1">Commander</a>
+                    <a class="button mr-1">Annuler</a>
+                </form>
+            </div>
+        </section>
+
+        <section id="cmdFinalizeSection" class="section ib posCmdFinalize">
+            <div id="cmdFinalize" class="box">
+                <div id="cmdFinalize__title" class="m-1 notification is-success is-light">
+                    <h1 class="title">Confirmation de votre commande</h1>
+                </div>
+                <div id="cmdFinalized__Body">
+                    <div id="cmdFinalize__Body__invoiceHeader">
+                    <!-- reste en JS -->
+                    </div>
+                    <div id="cmdFinalize__Body__invoiceBody">
+                        <!-- reste en JS -->
+                        </div>
+                    <div id="cmdFinalized__Body__buttons" class="field is-grouped"></div>
+                    <a class="button is-success mr-1">Payer</a>
+                    <a class="button mr-1">Annuler</a>
+                </div>
+            </div>    
+        </section>
+<script src="./main.js"></script>
+    </main>
+    <footer>
+ </footer>
+</body>
+</html>
