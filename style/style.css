@@ -22,6 +22,9 @@
     color: rgb(98, 98, 255);
 }
 
+.widht50{
+    max-width: 50px;
+}
 /* main{
     display:inline-block;
 } */
