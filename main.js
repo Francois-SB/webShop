@@ -82,11 +82,11 @@ states=;
 } 
 
  */
-articles.forEach((item, index) => {
+/* articles.forEach((item, index) => {
     console.log(item) //value
     console.log(index) //index
-  }) 
-  
+  })  */
+
 
 addTableContent(articles);
 /***********************************************************************************/
@@ -99,8 +99,8 @@ function addTableContent() {
     // creating all cells
     for (var i = 0; i < articles.length; i++) {
       // creates a table row
-      var row = document.createElement("tr");
-  
+    var row = document.createElement("tr");
+    row.setAttribute("id",articles[i].id);
       for (var j = 0; j < 5; j++) {
         // Create a <td> element and a text node, make the text
         // node the contents of the <td>, and put the <td> at
@@ -121,6 +121,9 @@ function addTableContent() {
                 cellText.setAttribute("class","widht50");
                 const inputId = `quantityTextId${articles[i].id}`;
                 cellText.setAttribute("id",inputId);
+                /* cellText.setAttribute("class","inputClass"); */
+                /* cellText.setAttribute("readonly","readonly"); */
+                cellText.setAttribute("onInput","modifyCart()");
                 break;
                 default:
                     console.log("error j articles")
@@ -134,4 +137,66 @@ function addTableContent() {
       tblBody.appendChild(row);
     }
   }
+/* 
+  //crée un tag avec des attributs et l'ajoute au html
+function createElement(...articles,i,parentTag,tagName,attributeType,attributeName,attributeType2,attributeName2){
+    var cellText = document.createElement(tagName);
+    cellText.setAttribute(attributeType,attributeName);
+    if(attributeName2 != 0)  cellText.setAttribute(attributeType2,attributeName2);
+    parentTag.appendChild(cellText);
+} */
+
+ function modifyCart(){
+    console.log("in modify cart");
+    /* const articleId = tableRow.id; */
+    document.addEventListener("keyup", function(event){
+     if(event.keyCode == '13'){ //si press enter
+        //recup id de la zone de text cliquée
+        const inputTagClicked = event.target;
+        //recup id article via row id
+        const cell = inputTagClicked.parentNode;
+        const tableRow = cell.parentNode;
+        const articleId = tableRow.id;
+        
+        const cartLineAction = checkArticleAndModifyCart(articleId,inputTagClicked.value);
+        console.log(cartLineAction ? "action succed" : "action failled")
+
+    } 
+});
+
+  }
+
+  function createCartLine(articleId,qtyValue){
+    console.log("in create article")
+    const newCartLine = document.createElement("span");
+    newCartLine.setAttribute("id",articleId);
+    newCartLine.classList.add("spanCart","tag");
+    //newCartLine.innerHTML = `id:${Articles[articleId].id} ${Articles[articleId].name} prix unitaire:${Articles[articleId].price}€  Quantité: ${qtyValue}`;//
+    newCartLine.innerHTML = ` articleId ${articleId} qtyValue ${qtyValue}`
+    const parent = document.querySelector("#cart__body__resume")
+    parent.appendChild(newCartLine);    
+            
+   
+            
+            
+  }
   
+  function checkArticleAndModifyCart(articleId, qtyValue){
+    console.log("check enter")
+            const spanCartId = document.querySelector(`#cartLineId${articleId}`)//'#cartLineId${article.id}'
+            console.log("spanCartId" + spanCartId)
+            if(spanCartId != null){//si i'id span <=> article slectionné existe
+                if(qtyValue==0){//TODO && span exist
+                    currentSpan.remove();
+                    return true
+                }
+            }
+            else {console.log("wazzzaaaaaaaaaaaaaaa articleId  " + articleId)
+                    createCartLine(articleId,qtyValue); //je crée la ligne
+                    return true}
+     return false
+  }
+
+  function filter(articles, categorie){//renvoie un tableau d'articles via la cat choisie
+
+  }
