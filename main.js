@@ -6,23 +6,24 @@ class Article {
         brand
         price
         quantity */
-        constructor(id, name, brand, price, quantity){
+        constructor(id, name, brand, price, quantity, category){
             this.id = id;
             this.name = name;
             this.brand = brand;
             this.price = price;
             this.quantity = quantity;
+            this.category = category;
         }
     }
     let articles = [
-    new Article(1,'MacBook', 'Apple',	2000, 0),
-    new Article(2,'S10', 'Samsung',	700, 0),
-    new Article(3,'Iphone150', 'Apple',	700, 0),
-    new Article(4,'Laptop'      , 	'PH',	1199 , 0),
-    new Article(5,'S8','Samsung',200,0),
-    new Article(6,'S9','Samsung',200,0),
-    new Article(7,'Iphone19','Apple',300,0),
-    new Article(8,'ipad','Apple',400,0),
+    new Article(1,'MacBook', 'Apple',	2000, 0,'pc'),
+    new Article(2,'S10', 'Samsung',	700, 0,'smartPhone'),
+    new Article(3,'Iphone150', 'Apple',	700, 0,'smartPhone'),
+    new Article(4,'Laptop'      , 	'PH',	1199 , 0,'pc'),
+    new Article(5,'S8','Samsung',200,0,'smartPhone'),
+    new Article(6,'S9','Samsung',200,0,'smartPhone'),
+    new Article(7,'Iphone19','Apple',300,0,'smartPhone'),
+    new Article(8,'ipad','Apple',400,0,'tablet'),
     ]
 /**************************************************************** */    
 
@@ -86,21 +87,43 @@ states=;
     console.log(item) //value
     console.log(index) //index
   })  */
-
-
-addTableContent(articles);
 /***********************************************************************************/
-/*****************************gestion affichage tab**************************************/
+/**                                  MAIN                                         **/
 /***********************************************************************************/
-function addTableContent() {
+/* const menu.addEventListener('click',) */
+displayArray(articles);
+
+const menuAll = document.querySelector("#all")
+menuAll.addEventListener('click', ()=> {
+    filterAndDisplay("all")
+});
+const menuSmartPhone = document.querySelector("#smartPhone")
+menuSmartPhone.addEventListener('click', ()=> {
+    filterAndDisplay("smartPhone")
+});
+const menuTablet = document.querySelector("#tablet")
+menuTablet.addEventListener('click', ()=> {
+    filterAndDisplay("tablet")
+});
+const menuPc = document.querySelector("#pc")
+menuPc.addEventListener('click', ()=> {
+    filterAndDisplay("pc")
+});
+
+/***********************************************************************************/
+/**                           gestion affichage tab                               **/
+/***********************************************************************************/
+function displayArray(tab) {
+console.log(tab)
+
 
     var tblBody = document.querySelector("#articles__body__articles__tab");
     console.log("tblBody" + tblBody);
     // creating all cells
-    for (var i = 0; i < articles.length; i++) {
+    for (var i = 0; i < tab.length; i++) {
       // creates a table row
     var row = document.createElement("tr");
-    row.setAttribute("id",articles[i].id);
+    row.setAttribute("id",tab[i].id);
       for (var j = 0; j < 5; j++) {
         // Create a <td> element and a text node, make the text
         // node the contents of the <td>, and put the <td> at
@@ -108,18 +131,18 @@ function addTableContent() {
         var cell = document.createElement("td");
         let k;
         switch(j){
-            case 0: var cellText = document.createTextNode(articles[i].id);
+            case 0: var cellText = document.createTextNode(tab[i].id);
                 break;
-                case 1:var cellText = document.createTextNode(articles[i].name);
+                case 1:var cellText = document.createTextNode(tab[i].name);
                 break;
-                case 2:var cellText = document.createTextNode(articles[i].brand);
+                case 2:var cellText = document.createTextNode(tab[i].brand);
                 break;
-                case 3:var cellText = document.createTextNode(articles[i].price);
+                case 3:var cellText = document.createTextNode(tab[i].price);
                 break;
                 case 4:var cellText = document.createElement("input");
                 cellText.setAttribute("type","text");
                 cellText.setAttribute("class","widht50");
-                const inputId = `quantityTextId${articles[i].id}`;
+                const inputId = `quantityTextId${tab[i].id}`;
                 cellText.setAttribute("id",inputId);
                 /* cellText.setAttribute("class","inputClass"); */
                 /* cellText.setAttribute("readonly","readonly"); */
@@ -136,6 +159,29 @@ function addTableContent() {
       // add the row to the end of the table body
       tblBody.appendChild(row);
     }
+  }
+
+
+  function filterAndDisplay(catName){
+    switch(catName){
+        case "all" : displayArray(articles);
+        break;
+        case "smartPhone" : displayArray(filter(smartPhone));
+        break;
+        case "tablet" : displayArray(filter(tablet));
+        break;
+        case "pc" : displayArray(filter(pc));
+        break;
+        default : console.log("souci or not souci")
+    }
+  }
+
+  function filter(catName){
+    const filteredTab = []
+    articles.forEach(item => {
+        if (item.category==catName) filteredTab.push(item)
+    })
+    return filteredTab
   }
 /* 
   //crée un tag avec des attributs et l'ajoute au html
@@ -200,3 +246,4 @@ function createElement(...articles,i,parentTag,tagName,attributeType,attributeNa
   function filter(articles, categorie){//renvoie un tableau d'articles via la cat choisie
 
   }
+
