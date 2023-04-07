@@ -1,11 +1,6 @@
 
 
 class Article {
-    /*     id
-        name
-        brand
-        price
-        quantity */
         constructor(id, name, brand, price, quantity, category){
             this.id = id;
             this.name = name;
@@ -91,34 +86,38 @@ states=;
 /**                                  MAIN                                         **/
 /***********************************************************************************/
 /* const menu.addEventListener('click',) */
-displayArray(articles);
+/* displayArray(articles); */
 
 const menuAll = document.querySelector("#all")
 menuAll.addEventListener('click', ()=> {
-    filterAndDisplay("all")
+    displayArray(articles)
 });
 const menuSmartPhone = document.querySelector("#smartPhone")
 menuSmartPhone.addEventListener('click', ()=> {
-    filterAndDisplay("smartPhone")
+    displayArray(filter("smartPhone"))
 });
 const menuTablet = document.querySelector("#tablet")
 menuTablet.addEventListener('click', ()=> {
-    filterAndDisplay("tablet")
+    displayArray(filter("tablet"))
 });
 const menuPc = document.querySelector("#pc")
 menuPc.addEventListener('click', ()=> {
-    filterAndDisplay("pc")
+    displayArray(filter('pc'))
 });
 
 /***********************************************************************************/
 /**                           gestion affichage tab                               **/
 /***********************************************************************************/
 function displayArray(tab) {
-console.log(tab)
+console.log("tab : "+tab)
 
-
+if (!tab || tab.length === 0) {
+    console.log("tab is null or empty");
+    return;
+  }
     var tblBody = document.querySelector("#articles__body__articles__tab");
-    console.log("tblBody" + tblBody);
+    /* if(tblBody.hasChildNodes()) eraseTable(); */
+    console.log("tab.length" + tab.length);
     // creating all cells
     for (var i = 0; i < tab.length; i++) {
       // creates a table row
@@ -160,29 +159,36 @@ console.log(tab)
       tblBody.appendChild(row);
     }
   }
-
+/* 
 
   function filterAndDisplay(catName){
+    console.log("enter filter and display// catName  "+catName)
     switch(catName){
         case "all" : displayArray(articles);
+        console.log("all");
         break;
-        case "smartPhone" : displayArray(filter(smartPhone));
+        case "smartPhone" : displayArray(filter("smartPhone"));
+        
         break;
-        case "tablet" : displayArray(filter(tablet));
+        case "tablet" : displayArray(filter("tablet"));
         break;
-        case "pc" : displayArray(filter(pc));
+        case "pc" : displayArray(filter("pc"));
         break;
         default : console.log("souci or not souci")
     }
+  } */
+
+  function filter(category){
+    return articles.filter(article => article.category === category);
   }
 
-  function filter(catName){
-    const filteredTab = []
-    articles.forEach(item => {
-        if (item.category==catName) filteredTab.push(item)
-    })
-    return filteredTab
-  }
+  function eraseTable() {
+    const old_tbody = document.querySelector("#articles__body__articles__tab")
+    const new_tbody = document.createElement('tbody');
+    new_tbody = document.setAttribute("id","articles__body__articles__tab")
+    old_tbody.parentNode.replaceChild(new_tbody, old_tbody)
+}
+
 /* 
   //crée un tag avec des attributs et l'ajoute au html
 function createElement(...articles,i,parentTag,tagName,attributeType,attributeName,attributeType2,attributeName2){
